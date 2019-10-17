@@ -1,0 +1,83 @@
+{
+  "source_id": "271302522981859268",
+  "version": "1",
+  "workflow": {
+    "name": "Morning Standup",
+    "blueprint": {
+      "version": "1",
+      "trigger": {
+        "type": "channel_action",
+        "id": "03e100fd-4ba1-49bc-8696-374a39935050",
+        "config": {
+          "name": "Post my Standup",
+          "channels": [
+            "CG9MPPF42"
+          ],
+          "callback_id": "4a2b2a02-5e13-4341-b187-76dc1584fa85",
+          "description": "Post my Standup"
+        }
+      },
+      "steps": [
+        {
+          "type": "message",
+          "id": "6b7bd7c1-c023-4d7e-9c6c-bedaf7bcf922",
+          "config": {
+            "user": {
+              "ref": "03e100fd-4ba1-49bc-8696-374a39935050==user"
+            },
+            "has_button": true,
+            "button_label": "Continue",
+            "message_text": "Good Morning, {{03e100fd-4ba1-49bc-8696-374a39935050==user}}. Ready to post your Standup update? :rocket:\n\n*Click the button below to start writing your update*"
+          }
+        },
+        {
+          "type": "dialog",
+          "id": "377a39d9-739c-423b-9d75-d7df7423c602",
+          "config": {
+            "user": {
+              "ref": "03e100fd-4ba1-49bc-8696-374a39935050==user"
+            },
+            "dialog_title": "Standup Update",
+            "dialog_elements": [
+              {
+                "name": "cdfcdac0-de55-4044-ad69-028642a8876b",
+                "type": "textarea",
+                "label": "Feeling Connected",
+                "optional": true
+              },
+              {
+                "name": "3034dac1-3108-40cf-a88d-a34fcfadda97",
+                "type": "textarea",
+                "label": "Feeling Informed",
+                "optional": true
+              },
+              {
+                "name": "825328a5-26a7-4a60-8a53-14ae796a344b",
+                "type": "textarea",
+                "label": "Feeling Supported",
+                "optional": true
+              }
+            ],
+            "results_channel": {
+              "value": "CG9MPPF42"
+            },
+            "dialog_submit_label": "",
+            "delivery_button_label": "Write my Standup",
+            "delivery_message_text": "Here's a refresher for you, {{03e100fd-4ba1-49bc-8696-374a39935050==user}}\n\n*Quick Standup Guide*\n*Note*: All sections optional\n\n1. Feeling Connected\nBeing able to put your own personal message or human connection spin on a message\n\n2. Feeling Informed\nGiving other team members insight into what you're working on\n\n3. Feeling Supported\nCall attention to impediments blocking your current work and receiving help on them"
+          }
+        },
+        {
+          "type": "message",
+          "id": "c40c66a6-9338-46cf-b2fd-1be5624dbc97",
+          "config": {
+            "user": {
+              "ref": "377a39d9-739c-423b-9d75-d7df7423c602==user_submitted"
+            },
+            "has_button": false,
+            "message_text": "Thanks for posting your update. Have a great rest of your day :smile:"
+          }
+        }
+      ]
+    }
+  }
+}
